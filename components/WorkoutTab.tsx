@@ -145,7 +145,7 @@ export default function WorkoutTab() {
               newVals[idx] = e.target.value;
               setter(newVals);
             }}
-            className="flex-1 bg-white border-2 border-gray-300 text-gray-900 px-2 sm:px-4 py-2 sm:py-3 rounded-lg text-center text-lg sm:text-xl font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="flex-1 min-w-0 bg-white border-2 border-gray-300 text-gray-900 px-1 sm:px-4 py-2 sm:py-3 rounded text-center text-base sm:text-xl font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         ))}
       </div>
