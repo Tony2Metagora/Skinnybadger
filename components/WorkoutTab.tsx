@@ -118,21 +118,21 @@ export default function WorkoutTab() {
   };
 
   const renderSetInputs = (values: string[], setter: (vals: string[]) => void, label: string) => (
-    <div className="mb-4">
-      <div className="flex items-center justify-between mb-2">
-        <label className="font-semibold text-lg">{label}</label>
+    <div className="mb-3 sm:mb-4">
+      <div className="flex items-center justify-between mb-1 sm:mb-2">
+        <label className="font-semibold text-sm sm:text-lg">{label}</label>
         {YOUTUBE_LINKS[label as keyof typeof YOUTUBE_LINKS] && (
           <a
             href={YOUTUBE_LINKS[label as keyof typeof YOUTUBE_LINKS]}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-orange-400 text-sm hover:text-orange-300"
+            className="text-orange-500 text-xs sm:text-sm hover:text-orange-600"
           >
             📺 Technique
           </a>
         )}
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-1 sm:gap-2">
         {values.map((val, idx) => (
           <input
             key={idx}
@@ -145,12 +145,12 @@ export default function WorkoutTab() {
               newVals[idx] = e.target.value;
               setter(newVals);
             }}
-            className="flex-1 bg-white border-2 border-gray-300 text-gray-900 px-4 py-3 rounded-lg text-center text-xl font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="flex-1 bg-white border-2 border-gray-300 text-gray-900 px-2 sm:px-4 py-2 sm:py-3 rounded-lg text-center text-lg sm:text-xl font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         ))}
       </div>
       {label !== 'Goblet squat' && label !== 'Row unilatéral KB' && label !== 'KB Halo' && (
-        <div className="mt-1 text-sm text-gray-600 flex items-center gap-2">
+        <div className="mt-1 text-xs sm:text-sm text-gray-600 flex items-center gap-2">
           <span>Total: {values.reduce((sum, v) => sum + (parseInt(v) || 0), 0)}</span>
           <span>{getIndicator(values.reduce((sum, v) => sum + (parseInt(v) || 0), 0), label, week)}</span>
         </div>
@@ -171,16 +171,16 @@ export default function WorkoutTab() {
 
       {!showHistory ? (
         <div>
-          <div className="bg-white rounded-lg p-6 mb-6 shadow-md border border-gray-200">
-            <h2 className="text-xl font-bold mb-4">Nouvelle séance</h2>
+          <div className="bg-white rounded-lg p-3 sm:p-6 mb-4 sm:mb-6 shadow-md border border-gray-200">
+            <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Nouvelle séance</h2>
             
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
               <div>
-                <label className="block text-sm text-gray-600 mb-2">Semaine</label>
+                <label className="block text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">Semaine</label>
                 <select
                   value={week}
                   onChange={(e) => setWeek(parseInt(e.target.value))}
-                  className="w-full bg-white border-2 border-gray-300 text-gray-900 px-4 py-3 rounded-lg text-lg font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-white border-2 border-gray-300 text-gray-900 px-2 sm:px-4 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >
                   {[1, 2, 3, 4].map(w => (
                     <option key={w} value={w}>Semaine {w}</option>
@@ -189,11 +189,11 @@ export default function WorkoutTab() {
               </div>
               
               <div>
-                <label className="block text-sm text-gray-600 mb-2">Séance</label>
+                <label className="block text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">Séance</label>
                 <select
                   value={sessionNumber}
                   onChange={(e) => setSessionNumber(parseInt(e.target.value))}
-                  className="w-full bg-white border-2 border-gray-300 text-gray-900 px-4 py-3 rounded-lg text-lg font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-white border-2 border-gray-300 text-gray-900 px-2 sm:px-4 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >
                   <option value={1}>Séance 1</option>
                   <option value={2}>Séance 2</option>
@@ -201,36 +201,36 @@ export default function WorkoutTab() {
               </div>
             </div>
 
-            <div className="mb-4">
-              <label className="flex items-center gap-3 cursor-pointer">
+            <div className="mb-3 sm:mb-4">
+              <label className="flex items-center gap-2 sm:gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={isExpress}
                   onChange={(e) => setIsExpress(e.target.checked)}
-                  className="w-5 h-5 accent-orange-500"
+                  className="w-4 h-4 sm:w-5 sm:h-5 accent-orange-500"
                 />
-                <span className="text-lg">⚡ Séance Express (Bloc A uniquement)</span>
+                <span className="text-sm sm:text-lg">⚡ Séance Express (Bloc A uniquement)</span>
               </label>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-6 mb-6 shadow-md border border-gray-200">
-            <h3 className="text-xl font-bold mb-4 text-orange-600">🔥 BLOC A (Score principal)</h3>
+          <div className="bg-white rounded-lg p-3 sm:p-6 mb-4 sm:mb-6 shadow-md border border-gray-200">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-orange-600">🔥 BLOC A (Score principal)</h3>
             {renderSetInputs(pompes, setPompes, 'Pompes')}
             {renderSetInputs(cossack, setCossack, 'Cossack squat')}
             {renderSetInputs(deadbug, setDeadbug, 'Dead bug')}
             
-            <div className="mt-4 p-4 bg-orange-50 rounded-lg border border-orange-200">
-              <div className="text-sm text-gray-600 mb-1">Score Bloc A prévu</div>
-              <div className="text-3xl font-bold text-orange-600">
+            <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-orange-50 rounded-lg border border-orange-200">
+              <div className="text-xs sm:text-sm text-gray-600 mb-1">Score Bloc A prévu</div>
+              <div className="text-2xl sm:text-3xl font-bold text-orange-600">
                 {calculateScore(pompes, cossack, deadbug)}
               </div>
             </div>
           </div>
 
           {!isExpress && (
-            <div className="bg-white rounded-lg p-6 mb-6 shadow-md border border-gray-200">
-              <h3 className="text-xl font-bold mb-4 text-blue-600">💪 BLOC B (Kettlebell 12kg)</h3>
+            <div className="bg-white rounded-lg p-3 sm:p-6 mb-4 sm:mb-6 shadow-md border border-gray-200">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-blue-600">💪 BLOC B (Kettlebell 12kg)</h3>
               {renderSetInputs(goblet, setGoblet, 'Goblet squat')}
               {renderSetInputs(row, setRow, 'Row unilatéral KB')}
               {renderSetInputs(halo, setHalo, 'KB Halo')}
@@ -239,55 +239,55 @@ export default function WorkoutTab() {
 
           <button
             onClick={handleSubmit}
-            className="w-full bg-orange-500 text-white py-4 rounded-lg text-xl font-bold hover:bg-orange-600 transition shadow-lg"
+            className="w-full bg-orange-500 text-white py-3 sm:py-4 rounded-lg text-lg sm:text-xl font-bold hover:bg-orange-600 transition shadow-lg"
           >
             ✅ Valider la séance
           </button>
         </div>
       ) : (
         <div>
-          <h2 className="text-2xl font-bold mb-4">Historique des séances</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Historique des séances</h2>
           
           {sessions.length === 0 ? (
-            <div className="bg-white rounded-lg p-8 text-center text-gray-500 border border-gray-200">
+            <div className="bg-white rounded-lg p-6 sm:p-8 text-center text-gray-500 border border-gray-200">
               Aucune séance enregistrée
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {[...sessions].reverse().map((session) => (
                 <div key={session.id} className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
                   <div
                     onClick={() => setExpandedSession(expandedSession === session.id ? null : session.id)}
-                    className="p-4 cursor-pointer hover:bg-gray-50 transition"
+                    className="p-3 sm:p-4 cursor-pointer hover:bg-gray-50 transition"
                   >
                     <div className="flex justify-between items-center">
                       <div>
-                        <div className="font-bold text-lg">
+                        <div className="font-bold text-base sm:text-lg">
                           S{session.week}.{session.sessionNumber} {session.isExpress && '⚡'}
                         </div>
-                        <div className="text-sm text-gray-500">{session.date}</div>
+                        <div className="text-xs sm:text-sm text-gray-500">{session.date}</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-orange-600">{session.score}</div>
+                        <div className="text-xl sm:text-2xl font-bold text-orange-600">{session.score}</div>
                         <div className="text-xs text-gray-500">Score Bloc A</div>
                       </div>
                     </div>
                   </div>
                   
                   {expandedSession === session.id && (
-                    <div className="border-t border-gray-200 p-4 bg-gray-50">
-                      <h4 className="font-semibold mb-2 text-orange-600">Bloc A</h4>
+                    <div className="border-t border-gray-200 p-3 sm:p-4 bg-gray-50">
+                      <h4 className="font-semibold mb-2 text-sm sm:text-base text-orange-600">Bloc A</h4>
                       {session.blocA.map((ex, idx) => (
-                        <div key={idx} className="mb-2 text-sm">
+                        <div key={idx} className="mb-2 text-xs sm:text-sm">
                           <span className="font-semibold">{ex.name}:</span> {ex.sets.join(' - ')} reps
                         </div>
                       ))}
                       
                       {session.blocB.length > 0 && (
                         <>
-                          <h4 className="font-semibold mb-2 mt-4 text-blue-600">Bloc B</h4>
+                          <h4 className="font-semibold mb-2 mt-3 sm:mt-4 text-sm sm:text-base text-blue-600">Bloc B</h4>
                           {session.blocB.map((ex, idx) => (
-                            <div key={idx} className="mb-2 text-sm">
+                            <div key={idx} className="mb-2 text-xs sm:text-sm">
                               <span className="font-semibold">{ex.name}:</span> {ex.sets.join(' - ')} reps
                             </div>
                           ))}

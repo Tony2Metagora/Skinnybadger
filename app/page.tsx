@@ -13,7 +13,7 @@ export default function Home() {
       <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-center">
           <Image
-            src="/Honeybadger logo.png"
+            src="/Skinnybadger/Honeybadger logo.png"
             alt="SkinnyBadger Logo"
             width={40}
             height={40}
