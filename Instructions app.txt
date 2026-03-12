@@ -1,0 +1,67 @@
+Génère une webapp mobile-first en Next.js (ou HTML/CSS/JS vanilla si plus simple) 
+pour suivre un programme de salle de 4 semaines.
+
+## Contexte du programme
+
+- 2 séances / semaine (libres, pas de jours imposés)
+- 4 semaines de progression
+- Chaque séance contient 2 blocs :
+
+BLOC A (score principal, à tracker)
+- Pompes
+- Cossack squat (reps par côté)
+- Dead bug (reps par côté)
+
+BLOC B (kettlebell 12 kg, reps à noter mais pas score principal)
+- Goblet squat
+- Row unilatéral kettlebell (reps par côté)
+- Kettlebell halo (tours par sens)
+
+## Logique de progression (fourchettes cibles par semaine)
+
+Semaine 1 : Pompes 3–6 / Cossack 5–6 / Dead bug 3–5
+Semaine 2 : Pompes 4–7 / Cossack 6–7 / Dead bug 4–6
+Semaine 3 : Pompes 5–8 / Cossack 7–8 / Dead bug 5–7
+Semaine 4 : Pompes 6–9 / Cossack 8–9 / Dead bug 6–8
+(3 séries pour chaque exo)
+
+## Fonctionnalités attendues
+
+1. SAISIE DE SÉANCE
+   - Sélectionner : semaine (1–4) + numéro de séance (1 ou 2)
+   - Pour chaque exercice : saisir reps par série (3 séries)
+   - Bouton "Valider la séance"
+
+2. SCORE AUTOMATIQUE
+   - Calculer le score Bloc A = total reps pompes + total reps cossack 
+     (les deux côtés comptés) + total reps dead bug (les deux côtés comptés)
+   - Afficher le score de la séance actuelle
+   - Afficher l'évolution du score session par session (graphique simple ligne)
+
+3. HISTORIQUE
+   - Tableau ou liste des séances passées : date, semaine, score Bloc A
+   - Pour chaque séance : détail des reps par exercice dépliable
+
+4. INDICATEUR DE PROGRESSION
+   - Pour chaque exo du Bloc A : indiquer si les reps sont dans la fourchette cible 
+     de la semaine (✅ dans la cible / 🔼 au-dessus / 🔽 en dessous)
+
+5. OPTION "SÉANCE EXPRESS"
+   - Si fatigue, permettre de logger seulement le Bloc A 
+     (marquer séance comme "express" dans l'historique)
+
+## Contraintes techniques
+
+- Stockage local uniquement (localStorage), pas de backend, pas de login
+- Mobile-first (utilisé en salle de sport sur téléphone)
+- UI simple et lisible, gros boutons, peu de texte
+- Dark mode de préférence (ambiance salle)
+- Pas de dépendances lourdes si possible
+
+## Nice to have (si simple à implémenter)
+
+- Rappel visuel de la technique : pour chaque exercice, 
+  un lien YouTube cliquable (ex. pour cossack squat : 
+  https://www.youtube.com/watch?v=JaCbmoDqUc4)
+- À la fin de la semaine 4 séance 2 : afficher un résumé 
+  "Record perso final" avec score total Bloc A comparé à semaine 1
